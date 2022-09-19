@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+
+  ci4:
+    image: nrb/php7.4-apache
+    restart: unless-stopped
+    working_dir: /var/www
+    user: 1000:1000
+    ports:
+      - 8000:80
+    volumes:
+      # change ./ to ./app after setting up project with:
+      # composer create-project codeigniter4/appstarter app
+      - ./:/var/www
+    environment:
+      - APACHE_RUN_USER="#1000"
+      - APACHE_RUN_GROUP="#1000"
+      - TZ=America/Los_Angeles
+
